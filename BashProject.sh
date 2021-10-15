@@ -65,10 +65,8 @@ while read line; do
 		echo $name >> proteomes.txt
 		# if the proteome is candidate, then check if it has highest hsp70 gene count
 		if [[ $hspCount -eq $maxhsp ]]; then
-			echo if block
 			maxname+=", $name"
 		elif [[ $hspCount -gt $maxhsp ]]; then
-			echo elif block
 			maxhsp=$hspCount
 			maxname=$name
 		fi
@@ -78,7 +76,7 @@ done < results.csv
 # add best proteome into the file
 echo >> proteomes.txt
 echo Best Proteome: >> proteomes.txt
-echo $name >> proteomes.txt
+echo $maxname >> proteomes.txt
 
 
 # cleanup
